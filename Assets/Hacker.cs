@@ -38,6 +38,11 @@ public class Hacker : MonoBehaviour
         {
             ShowMainMenu();
         }
+        else if (input == "exit")
+        {
+            Terminal.WriteLine("bye.");
+		
+		}
         else if (currentScreen == Screen.MainMenu)
         {
             RunMainMenu(input);
@@ -94,15 +99,12 @@ public class Hacker : MonoBehaviour
             case 1:
                 Terminal.WriteLine("Congraturations. You've hack into a library...");
                 Terminal.WriteLine(@"
-===;                 ;===
 :::|',             ,'|:::
 ---|'.|, _______ ,|.'|---
 :::|'.|'|???????|'|.'|:::
----|',|'|???????|'|,'|---
 :::|'.|'|???????|'|.'|:::
 ---|','   /%%%\   ','|---
 ===:'    /%%%%%\    ':===
-%%%%%%%%%%%%%%%%%%%%%%%%%
 				");
                 break;
             case 2:
@@ -115,7 +117,6 @@ public class Hacker : MonoBehaviour
     wVWXWXWXWVw   
          I  
          I 
-                                   
                 ");
                 break;
             case 3:
