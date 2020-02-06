@@ -4,6 +4,7 @@ using UnityEngine;
 public class Hacker : MonoBehaviour
 {
     // Game state
+    const string menuHint = "To go back to menu, enter 'menu'";
     int level;
 
     enum Screen { MainMenu, Password, Win };
@@ -13,20 +14,18 @@ public class Hacker : MonoBehaviour
 
     string[] level1passwords = { "math", "english", "music", "science", "study" };
     string[] level2passwords = { "liberal", "conservative", "taxation", "public", "cacophony" };
+    string[] level3passwords = { "database", "excellence", "private", "programming", "goodsalary" };
 
     // Start is called before the first frame update
     void Start()
     {
         ShowMainMenu();
-
     }
 
     void ShowMainMenu()
     {
         currentScreen = Screen.MainMenu;
         Terminal.ClearScreen();
-        Terminal.WriteLine("Now you need to hack an authority to get information.");
-        Terminal.WriteLine("Choose the place you wanna hack. 1, 2 or 3");
         Terminal.WriteLine("Enter your selection:");
     }
 
@@ -50,7 +49,7 @@ public class Hacker : MonoBehaviour
 
     void RunMainMenu(string input)
     {
-        var isValidLevelNumber = (input == "1" || input == "2");
+        var isValidLevelNumber = (input == "1" || input == "2"|| input == "3");
         if (isValidLevelNumber)
         {
             level = int.Parse(input);
@@ -59,6 +58,7 @@ public class Hacker : MonoBehaviour
         else
         {
             Terminal.WriteLine("Wrong command");
+			Terminal.WriteLine(menuHint);
         }
     }
     void CheckPassword(string input)
@@ -81,7 +81,7 @@ public class Hacker : MonoBehaviour
         currentScreen = Screen.Win;
         Terminal.ClearScreen();
         ShowLevelReward();
-		Terminal.WriteLine("To go back to menu, enter 'menu'");
+		Terminal.WriteLine(menuHint);
     }
 
     void ShowLevelReward()
@@ -108,6 +108,17 @@ public class Hacker : MonoBehaviour
 
 				");
                 break;
+            case 3:
+                Terminal.WriteLine("Have a good job...");
+                Terminal.WriteLine(@"
+   ____
+  /   /
+ /   /
+/___/
+
+				");
+                Terminal.WriteLine("there is something more...");
+                break;
             default:
                 Debug.LogError("some error");
                 break;
@@ -133,6 +144,9 @@ public class Hacker : MonoBehaviour
                 break;
             case 2:
                 password = level2passwords[UnityEngine.Random.Range(0, level2passwords.Length)];
+                break;
+            case 3:
+                password = level3passwords[UnityEngine.Random.Range(0, level3passwords.Length)];
                 break;
             default:
                 Debug.LogError("Invalid level numer");
