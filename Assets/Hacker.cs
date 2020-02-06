@@ -26,7 +26,10 @@ public class Hacker : MonoBehaviour
     {
         currentScreen = Screen.MainMenu;
         Terminal.ClearScreen();
-        Terminal.WriteLine("Enter your selection:");
+        Terminal.WriteLine("Now, you're about hack in institutions.");
+        Terminal.WriteLine("Enter 1 for school");
+        Terminal.WriteLine("Enter 2 for government");
+        Terminal.WriteLine("Enter 3 for Google");
     }
 
     void OnUserInput(string input)
@@ -49,7 +52,7 @@ public class Hacker : MonoBehaviour
 
     void RunMainMenu(string input)
     {
-        var isValidLevelNumber = (input == "1" || input == "2"|| input == "3");
+        var isValidLevelNumber = (input == "1" || input == "2" || input == "3");
         if (isValidLevelNumber)
         {
             level = int.Parse(input);
@@ -58,7 +61,7 @@ public class Hacker : MonoBehaviour
         else
         {
             Terminal.WriteLine("Wrong command");
-			Terminal.WriteLine(menuHint);
+            Terminal.WriteLine(menuHint);
         }
     }
     void CheckPassword(string input)
@@ -69,10 +72,10 @@ public class Hacker : MonoBehaviour
 
         }
         else
-        { 
+        {
             Terminal.WriteLine("Wrong password");
             StartGame();
-		}
+        }
 
     }
 
@@ -81,7 +84,7 @@ public class Hacker : MonoBehaviour
         currentScreen = Screen.Win;
         Terminal.ClearScreen();
         ShowLevelReward();
-		Terminal.WriteLine(menuHint);
+        Terminal.WriteLine(menuHint);
     }
 
     void ShowLevelReward()
@@ -89,41 +92,48 @@ public class Hacker : MonoBehaviour
         switch (level)
         {
             case 1:
-                Terminal.WriteLine("Have a book...");
+                Terminal.WriteLine("Congraturations. You've hack into a library...");
                 Terminal.WriteLine(@"
-   ____
-  /   /
- /   /
-/___/
-
+===;                 ;===
+:::|',             ,'|:::
+---|'.|, _______ ,|.'|---
+:::|'.|'|???????|'|.'|:::
+---|',|'|???????|'|,'|---
+:::|'.|'|???????|'|.'|:::
+---|','   /%%%\   ','|---
+===:'    /%%%%%\    ':===
+%%%%%%%%%%%%%%%%%%%%%%%%%
 				");
                 break;
             case 2:
-                Terminal.WriteLine("Have a politician...");
+                Terminal.WriteLine("You've logged in to a governmental database...");
                 Terminal.WriteLine(@"
-   ____
-  /   /
- /   /
-/___/
-
-				");
+         A 
+        AWA       
+   AA  AWXWA  AA 
+    VWXWXWXWXWV 
+    wVWXWXWXWVw   
+         I  
+         I 
+                                   
+                ");
                 break;
             case 3:
-                Terminal.WriteLine("Have a good job...");
+                Terminal.WriteLine("You talented hacker. Soon they'll offer you a job...");
                 Terminal.WriteLine(@"
-   ____
-  /   /
- /   /
-/___/
-
+  ___                _
+ / __|___  ___  __ _| |___
+| (_ / _ \/ _ \/ _` |   -_)
+ \___\___/\___/\__, |_\___|
+               |___/
 				");
                 Terminal.WriteLine("there is something more...");
                 break;
             default:
                 Debug.LogError("some error");
                 break;
-	
-		}
+
+        }
     }
 
     void StartGame()
